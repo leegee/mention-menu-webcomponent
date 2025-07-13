@@ -1,13 +1,20 @@
 {
   "name": "mention-menu-webcomponent",
-  "module": "mention-wrapper.js",
+  "author": {
+    "name": "Lee Goddard",
+    "email": "cv@lee.goddards.space"
+  },
+  "homepage": "https://leegee.github.io/mention-menu-webcomponent",
+  "module": "public/mention-wrapper.js",
   "type": "module",
   "scripts": {
-    "run": "serve .",
-    "dev": "serve ."
+    "run": "serve public",
+    "dev": "serve public",
+    "deploy": "gh-page"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "gh-pages": "^6.3.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
