@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Mention Menu Demo</title>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    body {
+      background: #111;
+      color: oldlace;
+      font-family: sans-serif;
+      padding: 2em;
+    }
+
+    input,
+    textarea,
+    [contenteditable=true] {
+      display: block;
+      width: 40em;
+      margin-bottom: 2em;
+      padding: 0.5em;
+      border: 1pt solid #555;
+      background: #222;
+      color: oldlace;
+      border-radius: 4pt;
+    }
+
+    textarea,
+    [contenteditable=true] {
+      min-height: 2em
+    }
+
+    em {
+      background-color: yellow;
+      color: black;
+    }
+  </style>
+
+  <script type="module">
+    import FAKE_DATA from './names.js'
+    import { MentionWrapper } from './mention-wrapper.js';
+
+    const mention = document.getElementById('my-mention-wrapper');
+
+    mention.fetchSuggestions = async function (query) {
+      return FAKE_DATA.filter(name => name.toLowerCase().startsWith(query.toLowerCase()));
+    };
+
+    mention.onMentionInsert = (word) => {
+      const span = document.createElement('em');
+      span.textContent = word;
+      span.contentEditable = false
+      return span;
+    };
+  </script>
+
+</head>
+
+<body>
+  <header>
+    <h1>@ Mention Demo</h1>
+  </header>
+
+  <main>
+    <mention-wrapper id="my-mention-wrapper">
+      <input type="text" placeholder="Try typing '@' here" />
+      <div contenteditable="true">
+        Or try typing '@' here!
+      </div>
+    </mention-wrapper>
+  </main>
+</body>
+
+</html>
