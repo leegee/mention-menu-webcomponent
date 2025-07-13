@@ -10,7 +10,7 @@
   "scripts": {
     "run": "serve public",
     "dev": "serve public",
-    "deploy": "gh-page"
+    "deploy": "gh-pages -d ./public"
   },
   "devDependencies": {
     "@types/bun": "latest",
